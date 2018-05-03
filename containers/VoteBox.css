@@ -21,6 +21,8 @@
     min-width: 10%;
     max-width: 90%;
     text-align: left;
+    position: absolute;
+    border: solid 1px #2dbbb4;
 }
 .dislikes-bar{
     background-color: #fcb22f;
@@ -29,6 +31,7 @@
     min-width: 10%;
     max-width: 90%;
     text-align: right;
+    border: solid 1px #fcb22f;
 }
 .votes-bar{
     position: absolute;
@@ -37,15 +40,16 @@
     opacity: .8;
     line-height: 2em;
     font-weight: 300;
+    font-size: 1.5vw;
 }
 .votes-bar div{
     overflow: hidden;
+    padding: 0 1em;
+    box-sizing: border-box;
+    height: 2.2em;
 }
-.votes-bar img {
-    margin: 0 1em;
-}
-.dislikes-bar img{
-    vertical-align: sub;
+.votes-bar img{
+    vertical-align: middle;
 }
 .voteLinks, .voteAgain{
     bottom: 30%;
@@ -63,4 +67,19 @@
     border: solid 1px white;
     transform: rotate(180deg);
     margin-left: .5em;
+}
+
+@media screen and (max-width: 600px) {
+    body {
+        font-size: 2vw;
+    }
+    .votes-bar img {
+        display: none;
+    }
+    .votes-bar{
+        font-size: 2vw;
+    }
+    .votes-bar div{
+        padding: 0 3%;
+    }
 }

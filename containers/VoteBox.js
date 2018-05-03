@@ -33,12 +33,25 @@ export default class VoteBox extends Component {
     }
 
     render() {
+        let thumbsUpStyles = {'marginRight':'1em'}
+        let thumbsDownStyles = {'transform':'rotate(180deg)',
+            'marginLeft':'1em'}
+
+
+        if (this.getLikesPercentage() < 15 ){
+            thumbsUpStyles.display = 'none'
+        }
+
+        if (this.getDisLikesPercentage() < 15 ){
+            thumbsDownStyles.display = 'none'
+        }
+
         return <div className="VoteBox" style={{'backgroundImage':'url(/img/' + this.props.pic + ')'}}>
             <div className="votebox-content">
                 <h1>{this.props.name}</h1>
                 <div className="voteLinks" style={this.state.hideVoteLinks ? {'display':'none'}:{'display':'block'}}>
-                    <a href="#" onClick={this.like.bind(this)}><img className="like-button" src="/img/thumbs-up.png" alt="Vote Like"/></a> &nbsp;
-                    <a href="#" onClick={this.dislike.bind(this)}><img className="dislike-button" src="/img/thumbs-up.png" alt="Vote Dislike" /></a>
+                    <span href="#" onClick={this.like.bind(this)}><img className="like-button" src="/img/thumbs-up.png" alt="Vote Like"/></span> &nbsp;
+                    <span href="#" onClick={this.dislike.bind(this)}><img className="dislike-button" src="/img/thumbs-up.png" alt="Vote Dislike" /></span>
                 </div>
                 <a className="voteAgain" style={!this.state.hideVoteLinks ? {'display':'none'}:null} onClick={this.voteAgain.bind(this)}>
                     Vote again
@@ -47,10 +60,11 @@ export default class VoteBox extends Component {
 
             <div className="votes-bar">
                 <div className="likes-bar" style={{'width':this.getLikesPercentage() + '%'}}>
-                    <img src="/img/thumbs-up.png" alt="likes"/> {this.getLikesPercentage()}%
+                    <img src="/img/thumbs-up.png" alt="likes" style={thumbsUpStyles}/> {this.getLikesPercentage()}%
                 </div>
                 <div className="dislikes-bar" style={{'width':this.getDisLikesPercentage() + '%'}}>
-                    {this.getDisLikesPercentage()}% <img src="/img/thumbs-up.png" alt="dislikes" className="flip-horizontally"/>
+                    <span style={{'paddingRight':'.5em'}}>{this.getDisLikesPercentage()}%</span>
+                     <img src="/img/thumbs-up.png" alt="dislikes" style={thumbsDownStyles}/>
                 </div>
             </div>
         </div>
