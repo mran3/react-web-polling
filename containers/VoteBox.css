@@ -1,6 +1,66 @@
 .VoteBox{
-    width: 200px;
-    height: 200px;
+    width: 35%;
+    padding-top: 35%;
     border: solid 1px;
-
+    background: darkgrey;
+    background-size: cover;
+    position: relative;
+    margin-bottom: 3em;
+}
+.votebox-content{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0 2em;
+}
+.likes-bar{
+    background-color: #2dbbb4;
+    height: 2em;
+    float: left;
+    min-width: 10%;
+    max-width: 90%;
+    text-align: left;
+}
+.dislikes-bar{
+    background-color: #fcb22f;
+    height: 2em;
+    float: right;
+    min-width: 10%;
+    max-width: 90%;
+    text-align: right;
+}
+.votes-bar{
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    opacity: .8;
+    line-height: 2em;
+    font-weight: 300;
+}
+.votes-bar div{
+    overflow: hidden;
+}
+.votes-bar img {
+    margin: 0 1em;
+}
+.dislikes-bar img{
+    vertical-align: sub;
+}
+.voteLinks, .voteAgain{
+    bottom: 30%;
+    position: absolute;
+    width: 100%;
+}
+.like-button{
+    background-color: rgba(45,187,180,.8);
+    padding: .3em;
+    border: solid 1px white;
+}
+.dislike-button{
+    background-color: rgba(252,178,47,.8);
+    padding: .3em;
+    border: solid 1px white;
+    transform: rotate(180deg);
+    margin-left: .5em;
 }

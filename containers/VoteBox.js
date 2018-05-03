@@ -33,17 +33,26 @@ export default class VoteBox extends Component {
     }
 
     render() {
-        return <div className="VoteBox">
-            <p>Vota por {this.props.name}</p>
-            <div className="voteLinks" style={this.state.hideVoteLinks ? {'display':'none'}:{'display':'block'}}>
-                <p><a href="#" onClick={this.like.bind(this)}>+1</a></p>
-                <p><a href="#" onClick={this.dislike.bind(this)}>-1</a></p>
+        return <div className="VoteBox" style={{'backgroundImage':'url(/img/' + this.props.pic + ')'}}>
+            <div className="votebox-content">
+                <h1>{this.props.name}</h1>
+                <div className="voteLinks" style={this.state.hideVoteLinks ? {'display':'none'}:{'display':'block'}}>
+                    <a href="#" onClick={this.like.bind(this)}><img className="like-button" src="/img/thumbs-up.png" alt="Vote Like"/></a> &nbsp;
+                    <a href="#" onClick={this.dislike.bind(this)}><img className="dislike-button" src="/img/thumbs-up.png" alt="Vote Dislike" /></a>
+                </div>
+                <a className="voteAgain" style={!this.state.hideVoteLinks ? {'display':'none'}:null} onClick={this.voteAgain.bind(this)}>
+                    Vote again
+                </a>
             </div>
-            <a style={!this.state.hideVoteLinks ? {'display':'none'}:null} onClick={this.voteAgain.bind(this)}>
-                Vote again
-            </a>
-            <p>Likes {this.getLikesPercentage()}%</p>
-            <p>Dislikes {this.getDisLikesPercentage()}%</p>
+
+            <div className="votes-bar">
+                <div className="likes-bar" style={{'width':this.getLikesPercentage() + '%'}}>
+                    <img src="/img/thumbs-up.png" alt="likes"/> {this.getLikesPercentage()}%
+                </div>
+                <div className="dislikes-bar" style={{'width':this.getDisLikesPercentage() + '%'}}>
+                    {this.getDisLikesPercentage()}% <img src="/img/thumbs-up.png" alt="dislikes" className="flip-horizontally"/>
+                </div>
+            </div>
         </div>
     }
 }

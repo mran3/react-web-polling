@@ -13,16 +13,18 @@ export default class App extends Component {
         for (let key in this.state.celebrities){
 
             let celebrityData = this.state.celebrities[key];
-            voteBoxes.push(<VoteBox key={key}
-                                    name={key}
-                                    likes={celebrityData.likes}
-                                    dislikes={celebrityData.dislikes}
-                                    like={()=>{
-                                        this.like(key)
-                                    }}
-                                    dislike={()=>{
-                                        this.dislike(key)
-                                    }}
+            voteBoxes.push(
+                <VoteBox key={key}
+                        name={key}
+                        likes={celebrityData.likes}
+                        dislikes={celebrityData.dislikes}
+                        like={()=>{
+                            this.like(key)
+                        }}
+                        dislike={()=>{
+                            this.dislike(key)
+                        }}
+                         pic={celebrityData.picture}
             />);
         }
 
@@ -54,7 +56,7 @@ export default class App extends Component {
         if(savedState){
             this.state = savedState
         } else {
-            fetch('http://www.mocky.io/v2/5ae95ae32d0000d4077b4b0b')
+            fetch('http://www.mocky.io/v2/5aeab24b3000004a005db475')
                 .then(function(response) {
                     return response.json()
                 })

@@ -11,12 +11,12 @@ module.exports = {
         rules: [{
             test: /\.(js|jsx)$/,
             exclude: /node_modules/,
-            loader: 'babel-loader'
+            loader: 'babel-loader?presets=es2015&retainLines=true&sourceMaps=true',
+
         },{
             test: /\.css/,
             loaders: ["style-loader", "css-loader"]
-        }
-        ]
+        }]
     },
     output: {
         path: parentDir + '/dist',
@@ -25,5 +25,8 @@ module.exports = {
     devServer: {
         contentBase: parentDir,
         historyApiFallback: true
-    }
+    },
+    devtool: 'source-map',
+    mode: 'development'
+
 }
